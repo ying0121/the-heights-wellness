@@ -1,0 +1,131 @@
+<!-- Footer -->
+<footer class="footer footer-one">
+    <div class="footer-top aos" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-md-start">
+                    <div class="footer-widget footer-menu">
+                        <h5 class="footer-title text-uppercase px-2"><%= component_text.c_footer_medical_guide %></h5>
+                        <ul>
+                            <li><a class="fs-5" href="/the-clinic" title=""><%= component_text.menu_the_clinic %></a></li>
+                            <li><a class="fs-5" href="/about-us" title=""><%= component_text.menu_about_us %></a></li>
+                            <li><a class="fs-5" href="orientation" title=""><%= component_text.menu_orientation %></a></li>
+                            <li><a class="fs-5" href="insurances" title=""><%= component_text.menu_insurances %></a></li>
+                            <li><a class="fs-5" href="#" title=""><%= component_text.menu_newsletter %></a></li>
+                            <li><a class="fs-5" href="#" title=""><%= component_text.link_portal %></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-md-start">
+                    <div class="footer-widget footer-menu">
+                        <h5 class="footer-title text-uppercase px-2"><%= component_text.c_footer_get_in_touch %></h5>
+                        <ul>
+                            <li class="d-flex gap-2">
+                                <span><i class="fas fa-map-marker-alt flat-icon-footer text-success fs-4"></i></span>
+                                <a href="javascript:;" class="fs-5"> <%= contact_info.address %></a>
+                            </li>
+                            <li class="d-flex gap-2">
+                                <span><i class="fa fa-phone-alt flat-icon-footer text-success fs-4"></i></span>
+                                <a href="callto:<%= contact_info.tel %>" class="fs-5"> <%= contact_info.tel %></a>
+                            </li>
+                            <li class="d-flex gap-2">
+                                <span><i class="fa fa-fax flat-icon-footer text-success fs-4"></i></span>
+                                <a href="callto:<%= contact_info.tel %>" class="fs-5"> <%= contact_info.fax %></a>
+                            </li>
+                            <li class="d-flex gap-2">
+                                <span><i class="fas fa-envelope flat-icon-footer text-success fs-4"></i></span>
+                                <a href="mailto:<%= contact_info.email %>" class="fs-5 text-break"> <%= contact_info.email %></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-md-start">
+                    <div class="footer-widget footer-menu">
+                        <h5 class="footer-title text-uppercase px-2"><%= component_text.c_footer_announcement %></h5>
+                        <p><%= component_text.c_footer_announcement_text %></p>
+                        <ul class="list-group list-group-light">
+                            <!-- First Name -->
+                            <div class="mb-3 form-focus" id="footer-first-name-container">
+                                <input type="text" class="form-control floating" id="footer_first_name" name="footer_first_name">
+                                <label class="focus-label" for="footer_first_name"><%= component_text.placeholder_first_name %></label>
+                            </div>
+                            <!-- Last Name -->
+                            <div class="mb-3 form-focus" id="footer-first-name-container">
+                                <input type="text" class="form-control floating" id="footer_last_name" name="footer_last_name">
+                                <label class="focus-label" for="footer_last_name"><%= component_text.placeholder_last_name %></label>
+                            </div>
+                            <!-- Date Of Birth -->
+                            <div class="mb-3 form-focus" id="footer-dob-container">
+                                <input type="text" class="form-control floating datetimepicker" id="footer_dob" name="footer_dob">
+                                <label class="focus-label" for="footer_dob"><%= component_text.placeholder_dob %></label>
+                            </div>
+                            <!-- Email -->
+                            <div class="mb-3 form-focus" id="footer-email-container">
+                                <input type="text" class="form-control floating" id="footer_email" name="footer_email">
+                                <label class="focus-label" for="footer_email"><%= component_text.placeholder_email %></label>
+                            </div>
+                            <!-- Phone -->
+                            <div class="mb-3 form-focus" id="footer-phone-container">
+                                <input type="text" class="form-control floating" id="footer_phone" name="footer_phone">
+                                <label class="focus-label" for="footer_phone"><%= component_text.placeholder_phone %></label>
+                            </div>
+                            <!-- Captcha Image -->
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <div id="footer_captcha_image"><%- footer_captcha_image %></div>
+                                <i id="footer_captcha_change" class="fa fa-lg fa-rotate-right fs-2 text-primary" style="cursor: pointer;"></i>
+                            </div>
+                            <!-- Captcha -->
+                            <div class="mb-3 form-focus" id="footer-captcha-container">
+                                <input type="password" class="form-control floating" id="footer_captcha" name="footer_captcha">
+                                <label class="focus-label" for="footer_captcha"><%= component_text.placeholder_captcha %></label>
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="view-all-more">
+                                <button id="footer_singup_btn" name="action" value="submit" type="button" class="btn btn-primary m-0 w-100"><%= component_text.btn_send %></button>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-md-start">
+                    <div class="footer-widget footer-menu">
+                        <h5 class="footer-title text-uppercase mb-2"><%= component_text.t_qrcode %></h5>
+                        <img width="180px" height="180px" src="<%= footer_qrcode %>" class="mb-3" />
+                        <a href="https://precisionq.com" target="_blank">
+                            <img class="mb-4" src="./assets/images/quality-logo-q.png" width="70%" />
+                        </a>
+                        <a href="https://precisionq.com" target="_blank">
+                            <p class="text-primary cursor-pointer"><%= component_text.c_footer_powered_by %></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <!-- Copyright -->
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="copyright-text">
+                            <!-- <p class="mb-0"> <%= component_text.t_home_footer %></p> -->
+                            <p class="mb-0"> Copyright © 2025 <a href="javascript:;" target="_blank">Dreamguys.</a> All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <!-- Copyright Menu -->
+                        <div class="copyright-menu">
+                            <ul class="policy-menu">
+                                <li><a href="javascript:;"><%= component_text.privacy_policy %></a></li>
+                                <li><a href="javascript:;"><%= component_text.terms_of_use %></a></li>
+                            </ul>
+                        </div>
+                        <!-- /Copyright Menu -->
+                    </div>
+                </div>
+            </div>
+            <!-- /Copyright -->					
+        </div>
+    </div>
+</footer>
+<!-- /Footer -->

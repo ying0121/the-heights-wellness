@@ -1,0 +1,224 @@
+<!-- Hero Carousel -->
+<section id="hero-section">
+    <div id="home-hero-carousel" class="carousel slide carousel-fade vh-100" data-bs-ride="carousel" data-bs-interval="5000">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#home-hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <% for (let i = 1; i < HEADER_BANNER.length; i++) { %>
+                <button type="button" data-bs-target="#home-hero-carousel" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i + 1 %>"></button>
+            <% } %>
+        </div>
+        <!-- Inner Slides -->
+        <div class="carousel-inner vh-100">
+            <% for (let i = 0; i < HEADER_BANNER.length; i++) { %>
+                <div class="carousel-item <%= i == 0 ? "active" : "" %>">
+                    <div class="bg-image" style="background-image: url('./assets/images/pageimgs/<%= HEADER_BANNER[i].img %>'); height: 100vh; background-size: cover; background-position: center;">
+                        <div class="mask" style="background-color: #00000020; height: 100vh;">
+                            <div class="d-flex flex-column justify-content-center align-items-center h-100 text-center text-white">
+                                <h1 class="display-3 fw-bold"><%= HEADER_BANNER[i].title %></h1>
+                                <p class="lead"><%= HEADER_BANNER[i].desc %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#home-hero-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Prev</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#home-hero-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+<!-- /Hero Carousel -->
+<!-- Service Carousel -->
+<% if (services.length > 0) { %>
+    <section class="latest-blog" id="service-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <% for (let i = 0; i < services.length; i++) { %>
+                    <div class="col-md-4 col-lg-3 aos" data-aos="fade-up">
+                        <div class="blog-wrap">
+                            <div class="image-holder">
+                                <img class="img-fluid" src="./assets/service/image/<%= services[i].image %>" alt="<%= services[i].title %>">
+                            </div>
+                            <div class="blog-wrap-body">
+                                <h3><a href="javascript:;" data-text="<%= services[i].title %>"><%= services[i].title %></a></h3>
+                                <div class="blog-footer">
+                                    <div class="row row-sm align-items-center position-relative">
+                                        <button href="javascript:;" data-bs-toggle="modal" data-bs-target="#payment-modal" class="btn btn-sm bg-info-light d-none" id="show-service-payment-modal-btn"></button>
+                                        <button href="javascript:;" data-bs-toggle="modal" data-bs-target="#service_request_modal" class="btn btn-sm bg-info-light d-none" id="show-service-modal-btn"></button>
+                                        <div class="col-6 text-start">
+                                            <a href="javascript:;" class="read-txt service_request" tabindex="0" data-id="<%= services[i].id %>" data-title="<%= services[i].title %>"><%= component_text.t_request %> <i class="fa fa-code-pull-request"></i></a>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <a href="./Services/detail?s=<%= services[i].id %>" class="cal-txt" tabindex="0" target="_blank"><%= component_text.btn_read_more %> <i class="fas fa-long-arrow-alt-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+<% } %>
+<!-- /Service Carousel -->
+<!-- Meet Our Doctor Section -->
+<% if (area_toggle.doctor_area == 1) { %>
+    <section class="testimonial-section" id="meet-our-doctor-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="testimonial-slider slick">
+                        <% for (let i = 0; i < doctors.length; i++) { %>
+                            <div class="testimonial-grid">
+                                <div class="testimonial-info">
+                                    <div class="testimonial-img">
+                                        <img src="./assets/images/doctors/<%= doctors[i].img %>" class="img-fluid" alt="<%= doctors[i].name %>">
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="section-header section-inner-header testimonial-header">
+                                            <h2><%= doctors[i].name %></h2>
+                                        </div>
+                                        <div class="testimonial-details">
+                                            <p><%- doctors[i].desc %></p>
+                                            <a href="javascript:;" class="cursor-pointer" data-needpopup-show="#doctor_detail_modal_<%= i %>">
+                                                <span><%= component_text.btn_read_more %> <i class="fa fa-arrow-right"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% for (let i = 0; i < doctors.length; i++) { %>
+                <div id='doctor_detail_modal_<%= i %>' class="needpopup">
+                    <%- doctors[i].fdesc %>
+                </div>
+            <% } %>
+        </div>
+    </section>
+<% } %>
+<!-- /Meet Our Doctor Section -->
+<!-- Our Staffs Section -->
+<% if (area_toggle.staff_area == 1) { %>
+    <section style="background-color: #ffffff !important;" class="doctors-section" id="staff-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 aos" data-aos="fade-up">
+                    <div class="section-header-one section-header-slider">
+                        <h2 class="section-title"><%= component_text.t_staff_title %></h2>
+                    </div>
+                </div>
+                <div class="col-md-6 aos" data-aos="fade-up">
+                    <div class="owl-nav slide-nav-2 text-end nav-control"></div>
+                </div>
+            </div>
+            <div class="owl-carousel doctor-slider-one owl-theme aos">
+                <% for (let i = 0; i < staffs.length; i++) { %>
+                    <div class="item w-300px">
+                        <div class="doctor-profile-widget">
+                            <div class="doc-pro-img">
+                                <a href="javascript:;">
+                                    <div class="doctor-profile-img">
+                                        <img src="./assets/images/staffs/<%= staffs[i].img %>" class="img-fluid" alt="Ruby Perrin">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="doc-content">
+                                <div class="doc-pro-info">
+                                    <div class="doc-pro-name">
+                                        <a href="javascript:;"><%= staffs[i].name %></a>
+                                        <p><%- staffs[i].desc %></p>
+                                    </div>
+                                </div>
+                                <div class="doc-pro-location">
+                                    <a href="javascript:;" data-needpopup-show="#staff_detail_modal_<%= i %>"><%= component_text.btn_read_more %> <i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <% for (let i = 0; i < staffs.length; i++) { %>
+                <div id='staff_detail_modal_<%= i %>' class="needpopup">
+                    <div>Name: <%= staffs[i].name %></div>
+                    <div>Job: <%= staffs[i].job %></div>
+                    <% if (staffs[i].email_tel_ext_toggle == 1) { %>
+                        <div>Email: <%= staffs[i].email %></div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">Tel: <%= staffs[i].tel %></div>
+                            <div class="col-12 col-md-6">Ext: <%= staffs[i].ext %></div>
+                        </div>
+                    <% } %>
+                    <br>
+                    <%- staffs[i].fdesc %>
+                </div>
+            <% } %>
+        </div>
+    </section>
+<% } %>
+<!-- /Our Staffs Section -->
+<!-- Patient Review Section -->
+<section class="main-wrapper home-ten" id="patient-review-section">
+    <div class="our-doctor-section">
+        <div class="section-floating-bg">
+            <img src="./assets/images/bg/hexagen-group-1.png" alt="design-image">
+            <img src="./assets/images/bg/hexagon-group-2.png" alt="design-image">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 aos" data-aos="fade-up">
+                    <div class="section-header-one section-header-slider">
+                        <h2 class="section-title"><%= component_text.t_patient_review_title %></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-gap aos justify-content-center" data-aos="fade-up">
+                <% for (let i = 0; i < patient_reviews.length; i++) { %>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+                                <div class="listing-img">
+                                    <a href="javascript:;"><img src="./assets/images/patient_review/<%= patient_reviews[i].img %>"
+                                            class="img-fluid" alt="<%= patient_reviews[i].name %>"></a>
+                                    <div class="fav-item">
+                                        <div class="featured-rating"><i class="fa fa-star "></i> <span>5</span></div>
+                                        <a href="javascript:void(0)" class="fav-icon">
+                                            <i class="fa fa-heart"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-profile-details">
+                                            <div class="listing-floating-img">
+                                                <img src="assets/images/bg/ecg-wave.png" alt="ecg-wave">
+                                            </div>
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <h6><a href="javascript:;"><%= patient_reviews[i].name %> </a></h6>
+                                                    <span class="mb-2"><%- patient_reviews[i].desc %></span>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Patient Review Section -->

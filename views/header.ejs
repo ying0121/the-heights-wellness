@@ -1,0 +1,127 @@
+<!-- Header -->
+<header class="header header-custom header-fixed header-one" style="border-bottom: 2px solid #1B5D92; box-shadow: 0px 4px 4px 0px #A0A0A060;">
+    <div class="container">
+        <nav class="justify-content-sm-end justify-content-md-around navbar navbar-expend-lg">
+            <div class="d-flex justify-content-around align-items-center gap-2">
+                <div class="d-none d-md-flex d-flex justify-content-center align-items-center flex-wrap">
+                    <div>
+                        <i class="fa fa-phone text-primary fs-5"></i>&nbsp;:&nbsp;
+                        <a href="tel:<%= contact_info.tel %>" class="text-gray"><%= contact_info.tel %></a>
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;|&nbsp;
+                        <i class="fa fa-fax text-info fs-5"></i>&nbsp;:&nbsp;
+                        <a href="tel:<%= contact_info.tel %>" class="text-gray"><%= contact_info.tel %></a>
+                    </div>
+                    <div class="text-gray">
+                        &nbsp;&nbsp;|&nbsp;<%= component_text.t_topbar_emergency_call %>
+                    </div>
+                    <% if (contact_info.email) { %>
+                        <div>
+                            <span class="d-none d-md-inline">&nbsp;&nbsp;|&nbsp;&nbsp;</span><i class="fa fa-envelope text-success fs-5"></i>&nbsp;:&nbsp;
+                            <a href="mailto:<%= contact_info.email %>" class="text-gray"><%= contact_info.email %></a>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="d-flex align-items-center">
+                    <% if (contact_info.portal_show == 1) { %>
+                        <a href="#" class="themesflat-button font-default process px-3 mx-1 text-gray"><span><%= component_text.link_portal %></span></a>
+                    <% } %>
+                    <% if (area_toggle.vault_area) { %>
+                        <% if (!patient_id || !patient_name) { %>
+                            <a href="./login" class="themesflat-button font-default process px-3 mx-1 text-gray"><span><%= component_text.link_sign_in %></span></a>
+                        <% } else { %>
+                            <a href="./logout" class="themesflat-button font-default process px-3 mx-1 text-gray"><span><%= component_text.link_sign_out %></span></a>
+                        <% } %>
+                    <% } %>
+                    <div class="d-flex align-items-center gap-1">
+                        <div class="btn p-1 langbtn <%= language === "en" ? "active" : "" %>" onclick="setLang('en');">
+                            <img src="./assets/images/flags/en.png" style="width: 20px; height: 20px;" />
+                        </div>
+                        <div class="btn p-1 langbtn <%= language === "en" ? "" : "active" %>" onclick="setLang('es');">
+                            <img src="./assets/images/flags/es.png" style="width: 20px; height: 20px;" />
+                        </div>
+                        <% if (patient_id && patient_name) { %>
+                            <div class="d-flex justify-content-center align-items-center mx-3">
+                                <button class="d-none" data-bs-ripple-init data-bs-modal-init data-bs-target="#info-manage-modal" id="patient-info-modal-view"></button>
+                                <div id="patient-info" class="text-gray bg-primary d-flex justify-content-center align-items-center rounded rounded-pill fs-3" style="width: 36px; height: 36px; cursor: pointer;">
+                                    <%= patient_info.fname[0] %>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+                <a id="mobile_btn" href="javascript:;">
+                    <span class="bar-icon"><span></span><span></span><span></span></span>
+                </a>
+                <a href="./" class="navbar-brand logo">
+                    <img src="./assets/images/logo.png" class="img-fluid" alt="Logo">
+                </a>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="menu-header">
+                    <a href="./" class="menu-logo">
+                        <img src="./assets/images/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                    <a id="menu_close" class="menu-close" href="javascript:;">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+                <ul class="main-nav gap-2">
+                    <li class="<%= page_tag == "home" ? "active" : "" %>"><a href="./"><%= component_text.menu_home %></a></li>
+                    <li class="<%= page_tag == "the-clinic" ? "active" : "" %>"><a href="./the-clinic"><%= component_text.menu_the_clinic %></a></li>
+                    <li class="<%= page_tag == "about-us" ? "active" : "" %>"><a href="./about-us"><%= component_text.menu_about_us %></a></li>
+                    <li class="<%= page_tag == "services" ? "active" : "" %>"><a href="./services"><%= component_text.menu_services %></a></li>
+                    <li class="<%= page_tag == "letters" ? "active" : "" %>"><a href="./letters"><%= component_text.menu_letters %></a></li>
+                    <li class="<%= page_tag == "orientation" ? "active" : "" %>"><a href="./orientation"><%= component_text.menu_orientation %></a></li>
+                    <li class="<%= page_tag == "community-resources" ? "active" : "" %>"><a href="./community-resources"><%= component_text.menu_community_resources %></a></li>
+                    <li class="has-submenu">
+                        <a href="javascript:;"><%= component_text.menu_education %> <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="./educations?p=asthma"><%= component_text.menu_asthma %></a></li>
+                            <li><a href="./educations?p=aye_vision"><%= component_text.menu_aye_vision %></a></li>
+                            <li><a href="./educations?p=cholesterol"><%= component_text.menu_cholesterol %></a></li>
+                            <li><a href="./educations?p=diabietes"><%= component_text.menu_diabietes %></a></li>
+                            <li><a href="./educations?p=drug_abuse"><%= component_text.menu_drug_abuse %></a></li>
+                            <li><a href="./educations?p=nutrition"><%= component_text.menu_nutrition %></a></li>
+                            <li><a href="./educations?p=pain"><%= component_text.menu_pain %></a></li>
+                            <li><a href="./educations?p=pain_back"><%= component_text.menu_pain_back %></a></li>
+                            <li><a href="./educations?p=pulmonary_disease"><%= component_text.menu_pulmonary_disease %></a></li>
+                            <li><a href="./educations?p=tobacco_treatment"><%= component_text.menu_tobacco_treatment %></a></li>
+                        </ul>
+                    </li>
+                    <li class="<%= page_tag == "insurances" ? "active" : "" %>"><a href="./insurances"><%= component_text.menu_insurances %></a></li>
+                    <li class="<%= page_tag == "contact" ? "active" : "" %>"><a href="./contact"><%= component_text.menu_contact %></a></li>
+                    <% if (patient_id && patient_name) { %>
+                        <li class="<%= page_tag == "vault" ? "active" : "" %>"><a href="./vault"><%= component_text.menu_vault %></a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- /Header -->
+<!-- Work Time -->
+<!-- Work Time -->
+<!-- Floating Hours Toggle -->
+<div id="hours-toggle" class="hours-toggle">
+    <i class="fa fa-clock fs-5"></i>
+</div>
+<!-- /Work Time -->
+<!-- Working Hours Panel -->
+<div id="working-hours" class="working-hours">
+    <p class="h4 my-3 ms-4"><%= component_text.t_working_hour %></p>
+    <ul>
+        <% for (let i=0; i < working_hours.length; i++) { %>
+            <div class="mx-1 text-black">
+                <i class="fa fa-check text-success mx-2 fs-4"></i>
+                <%= working_hours[i].name %> : <%= working_hours[i].time %>
+                <hr class="my-3">
+            </div>
+        <% } %>
+    </ul>
+</div>

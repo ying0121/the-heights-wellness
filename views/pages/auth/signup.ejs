@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes') %>
+
+<style>
+    /* input-shake */
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        20% { transform: translateX(-7px); }
+        40% { transform: translateX(5px); }
+        60% { transform: translateX(-3px); }
+        80% { transform: translateX(1px); }
+        100% { transform: translateX(0); }
+    }
+
+    .shake {
+        animation: shake 0.4s ease-in-out;
+    }
+</style>
+
+<body>
+    <!-- Header -->
+    <%- include('../header') %>
+    <!-- Main -->
+    <main>
+        <div id="intro" class="bg-image shadow-2-strong parallax-container">
+            <div class="mask d-flex align-items-center min-h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-md-8 bg-white rounded shadow-5-strong p-4">
+                            <!-- Title -->
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <div id="signup-lottie" style="width: 150px; height: 150px;"></div>
+                            </div>
+                            <!-- Desc -->
+                            <div class="fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_si_welcome %></div>
+                            <!-- Alert Begin -->
+                            <div class="alert alert-danger d-none" data-bs-alert-init id="alert-message"></div>
+                            <!-- Alert End -->
+                            <!-- Form Begin -->
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <!-- First Name Input -->
+                                        <div class="form-outline mb-4" data-bs-input-init id="fname-container">
+                                            <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" />
+                                            <label class="form-label" for="first_name"><%= component_text.placeholder_first_name %></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Last Name Input -->
+                                        <div class="form-outline mb-4" data-bs-input-init id="lname-container">
+                                            <input type="text" name="last_name" id="last_name" class="form-control form-control-lg" />
+                                            <label class="form-label" for="last_name"><%= component_text.placeholder_last_name %></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Birthday Input -->
+                                        <div class="form-outline mb-4" data-bs-input-init id="dob-container">
+                                            <input type="date" name="dob" id="dob" class="form-control form-control-lg" />
+                                            <label class="form-label" for="dob"><%= component_text.placeholder_dob %></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Email input -->
+                                        <div class="form-outline mb-4" data-bs-input-init id="email-container">
+                                            <input type="text" name="email" id="email" class="form-control form-control-lg" />
+                                            <label class="form-label" for="email"><%= component_text.placeholder_email %></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Phone input -->
+                                        <div class="form-outline mb-4" data-bs-input-init id="phone-container">
+                                            <input type="text" name="phone" id="phone" class="form-control form-control-lg" />
+                                            <label class="form-label" for="phone"><%= component_text.placeholder_phone %></label>
+                                        </div>
+                                    </div>
+                                    <!-- Image Captcha -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="row justify-content-start align-items-center">
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-between align-items-center gap-1">
+                                                    <div id="signup_captcha_image"><%- captcha_image %></div>
+                                                    <i id="captcha_change" class="fa fa-lg fa-rotate-right fs-2 text-danger cursor-pointer"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-outline" data-bs-input-init id="captcha-container">
+                                                    <input type="password" id="captcha" name="captcha" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="contact_captcha"><%= component_text.placeholder_captcha %></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Opt In & Out -->
+                                    <div class="col-md-12 mb-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="opt_status" id="home_opt_in" value="1" checked />
+                                            <label class="form-check-label" for="home_opt_in"> <%= component_text.t_opt_in_out_in %> </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="opt_status" id="home_opt_out" value="0" />
+                                            <label class="form-check-label" for="home_opt_out"> <%= component_text.t_opt_in_out_out %> </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Submit button -->
+                                <button name="action" id="submit" class="btn btn-danger btn-block py-3" data-bs-ripple-init><%= component_text.btn_submit %></button>
+                            </div>
+                            <!-- Help Buttons -->
+                            <div class="row pt-4">
+                                <div class="col-md-12 d-flex justify-content-end">
+                                    <a href="./login" class="btn btn-link text-danger" role="button" data-bs-ripple-init><span><%= component_text.link_sign_in %></span></a>
+                                </div>
+                            </div>
+                            <!-- Form End -->
+                            <hr class="my-1" />
+                            <p class="m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <%- include('../footer') %>
+</body>
+
+<script>
+  lottie.loadAnimation({
+    container: document.getElementById('signup-lottie'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: './assets/animations/register.json'
+  });
+</script>
+
+<script>
+    function showAlert(title, message, type) {
+        if (title) {
+            Swal.fire({
+                title: title,
+                text: message,
+                icon: type,
+                confirmButtonText: 'Close'
+            })
+        } else {
+            Swal.fire({
+                text: message,
+                icon: type,
+                confirmButtonText: 'Close'
+            })
+        }
+    }
+
+    $(document).ready(function() {
+        $('#captcha_change').click(() => {
+            $.post({
+                url: './home/changeCaptchaImage',
+                method: 'POST',
+                data: {
+                    type: "home"
+                },
+                dataType: 'json',
+                success: function(res) {
+                    $('#signup_captcha_image').html(res.iamge)
+                }
+            })
+        })
+
+        $("#submit").click(function (e) {
+            e.preventDefault()
+
+            const params = {
+                first_name: $("#first_name").val(),
+                last_name: $("#last_name").val(),
+                dob: $("#dob").val(),
+                email: $("#email").val(),
+                phone: $("#phone").val(),
+                captcha: $("#captcha").val()
+            }
+
+            if (!params.first_name) {
+                const input = document.getElementById('fname-container')
+                input.classList.remove('shake')
+                void input.offsetWidth // <== Force reflow
+                input.classList.add('shake')
+
+                input.focus()
+                return
+            }
+            if (!params.last_name) {
+                const input = document.getElementById('lname-container')
+                input.classList.remove('shake')
+                void input.offsetWidth // <== Force reflow
+                input.classList.add('shake')
+
+                input.focus()
+                return
+            }
+            if (!params.dob) {
+                const input = document.getElementById('dob-container')
+                input.classList.remove('shake')
+                void input.offsetWidth // <== Force reflow
+                input.classList.add('shake')
+
+                input.focus()
+                return
+            }
+            if (!params.email) {
+                const input = document.getElementById('email-container')
+                input.classList.remove('shake')
+                void input.offsetWidth // <== Force reflow
+                input.classList.add('shake')
+
+                input.focus()
+                return
+            }
+            if (!params.phone) {
+                const input = document.getElementById('phone-container')
+                input.classList.remove('shake')
+                void input.offsetWidth // <== Force reflow
+                input.classList.add('shake')
+
+                input.focus()
+                return
+            }
+            if (!params.captcha) {
+                const input = document.getElementById('captcha-container')
+                input.classList.remove('shake')
+                void input.offsetWidth // <== Force reflow
+                input.classList.add('shake')
+
+                input.focus()
+                return
+            }
+
+            $.post({
+                url: "./confirmSignUp",
+                data: params,
+                dataType: "json",
+                success: function (res) {
+                    if (res.status === "success") {
+                        showAlert("<%= component_text.c_case %> # : " + res.case_number + "<%= acronym %>", "<%= component_text.t_pa_ah_alert_success %>", "success")
+                    } else {
+                        if (res.error === "captcha") {
+                            $("#signup_captcha_image").html(res.captcha)
+                        }
+                        $("#alert-message").removeClass("shake")
+                        $("#alert-message").html(res.error_message)
+                        $("#alert-message").addClass("shake")
+                        $("#alert-message").removeClass("d-none")
+                    }
+                },
+                error: function (xhr, status, error) {
+                    showAlert("", error.message, "error")
+                }
+            })
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes') %>
+
+<style>
+    /* input-shake */
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        20% { transform: translateX(-7px); }
+        40% { transform: translateX(5px); }
+        60% { transform: translateX(-3px); }
+        80% { transform: translateX(1px); }
+        100% { transform: translateX(0); }
+    }
+
+    .shake {
+        animation: shake 0.4s ease-in-out;
+    }
+</style>
+
+<body>
+    <!-- Header -->
+    <%- include('../header') %>
+    <!-- Main -->
+    <main>
+        <div id="intro" class="bg-image shadow-2-strong parallax-container">
+            <div class="mask d-flex align-items-center min-h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-md-8 bg-white rounded shadow-5-strong p-4">
+                            <!-- Title -->
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <div id="security-lottie" style="width: 150px; height: 150px;"></div>
+                            </div>
+                            <!-- Desc -->
+                            <div class="fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_si_welcome %></div>
+                            <!-- Alert Begin -->
+                            <div class="alert alert-danger d-none" data-bs-alert-init id="alert-message"></div>
+                            <!-- Alert End -->
+                            <div class="fs-5 mb-3 text-primary"><%= question[language] ? question[language] : "" %></div>
+                            <!-- Form Begin -->
+                            <div>
+                                <!-- Answer input -->
+                                <div class="form-outline mb-4" data-bs-input-init>
+                                    <i class="far fa-eye trailing fa-fw pe-auto cursor-pointer" id="password-icon"></i>
+                                    <input type="text" name="answer" id="password" class="form-control form-control-lg form-icon-trailing" />
+                                    <label class="form-label" for="password"><%= component_text.placeholder_answer_security %></label>
+                                </div>
+                                <!-- Submit button -->
+                                <button name="submit" id="submit" class="btn btn-danger btn-block py-3" data-bs-ripple-init><%= component_text.btn_submit %></button>
+                            </div>
+                            <!-- Form End -->
+                            <hr class="my-1" />
+                            <p class="m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <%- include('../footer') %>
+</body>
+
+<script>
+  lottie.loadAnimation({
+    container: document.getElementById('security-lottie'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: './assets/animations/questions.json'
+  });
+</script>
+
+<script>
+    const passwordInput = document.getElementById('password')
+    const passwordToggleIcon = document.getElementById('password-icon')
+
+    passwordToggleIcon.addEventListener('pointerdown', (e) => {
+        e.preventDefault()
+        // Toggle input type between password and text
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'
+            passwordToggleIcon.classList.remove('fa-eye')
+            passwordToggleIcon.classList.add('fa-eye-slash')
+        } else {
+            passwordInput.type = 'password'
+            passwordToggleIcon.classList.remove('fa-eye-slash')
+            passwordToggleIcon.classList.add('fa-eye')
+        }
+    })
+
+    function showAlert(title, message, type) {
+        if (title) {
+            Swal.fire({
+                title: title,
+                text: message,
+                icon: type,
+                confirmButtonText: 'Close'
+            })
+        } else {
+            Swal.fire({
+                text: message,
+                icon: type,
+                confirmButtonText: 'Close'
+            })
+        }
+    }
+
+    $(document).ready(function() {
+        $("#submit").click(function (e) {
+            e.preventDefault()
+
+            const params = {
+                answer: $("#password").val()
+            }
+
+            $.post({
+                url: "./confirmSecurity",
+                data: params,
+                dataType: "json",
+                success: function (res) {
+                    window.location.href = res.url
+                }, error: function (xhr, status, error) {
+                    showAlert("", "<%= component_text.t_pa_ah_alert_failed %>", "error")
+                }
+            })
+        })
+
+    })
+</script>
+
+</html>
