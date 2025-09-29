@@ -9504,22 +9504,29 @@ html.menu-opened body {
 }
 .banner-img .banner-img1 {
   position: absolute;
-  top: 260px;
-  left: -40px;
+  top: -160px;
+  left: -5%;
   -webkit-animation: float 2s ease-in-out infinite;
   animation: float 2s ease-in-out infinite;
 }
 .banner-img .banner-img2 {
   position: absolute;
   top: 200px;
-  right: 20px;
-  -webkit-animation: mover 3s infinite alternate;
+  right: 10%;
+  -webkit-animation: mover 1s infinite alternate;
   animation: mover 3s infinite alternate;
 }
 .banner-img .banner-img3 {
   position: absolute;
-  top: 500px;
-  right: 0px;
+  top: -50px;
+  right: 10%;
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+.banner-img .banner-img4 {
+  position: absolute;
+  top: 180px;
+  left: 15%;
   -webkit-animation: mover 1s infinite alternate;
   animation: mover 1s infinite alternate;
 }

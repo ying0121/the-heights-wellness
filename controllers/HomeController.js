@@ -32,7 +32,7 @@ const { generateQRCode } = require("../utils/qrcode")
 exports.render = async (req, res, next) => {
 	let data = {}
 
-	// 
+	//
 	data.page_tag = "home"
 	data.page_title = "THE HEIGHTS WELLNESS"
 	data.page_desc = "The Heights Wellness Medical Service"

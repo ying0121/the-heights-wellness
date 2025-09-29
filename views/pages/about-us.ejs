@@ -1,0 +1,15 @@
+<!-- Hero Parallax Image -->
+<% let img_id = Math.floor(Math.random() * HEADER_BANNER.length); %>
+<div class="parallax-container w-100" style="background-image: url('./assets/images/pageimgs/<%= HEADER_BANNER[img_id].img %>'); height: 100vh;">
+    <div class="d-flex align-items-center" style="height:100%;">
+        <div class="p-5 col-12 col-md-8 aos" data-aos="fade-right">
+            <div style="height:30%;" class="d-flex align-items-center text-white fs-2 aos" data-aos="fade-up">
+                <%- HEADER_BANNER[img_id].title %>
+            </div>
+            <div style="height:70%;" class="d-flex align-items-center text-white fs-4 mt-3 aos" data-aos="fade-up">
+                <%- HEADER_BANNER[img_id].desc %>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Hero Parallax Image -->
