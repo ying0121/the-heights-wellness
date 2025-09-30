@@ -1,3 +1,10 @@
 <script>
+    window.addEventListener('scroll', () => {
+        const video = document.querySelector('.parallax-video')
+        const scrollPosition = window.scrollY
+        if (window.innerWidth >= 768) {
+            video.style.transform = `translateY(${scrollPosition * 0.4}px)`
+        }
+    })
     $(document).ready(function () {})
 </script>

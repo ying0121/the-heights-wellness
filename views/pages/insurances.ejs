@@ -1,0 +1,58 @@
+<!-- Hero Parallax Video -->
+<% let index = Math.floor(Math.random() * 4) + 1 %>
+<div class="video-parallax-container">
+    <video class="parallax-video" autoplay muted loop playsinline>
+        <source src="./assets/videos/insurance<%= index %>.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<!-- /Hero Parallax Video -->
+<!-- Insurance Title -->
+<div class="container my-5">
+    <p class="h1"><%= component_text.t_ins_title %></p>
+    <p class="lead"><%= component_text.t_ins_desc %> <a class="text-danger" href="./contact" target="_blank"><em><%= component_text.menu_contact %></em></a></p>
+</div>
+<!-- /Insurance Title -->
+<!-- Insurance -->
+<section class="doctors-section" style="background-color: #fafafa;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 aos" data-aos="fade-up">
+                <div class="section-header-one section-header-slider">
+                    <h2 class="section-title"></h2>
+                </div>
+            </div>
+            <div class="col-md-6 aos" data-aos="fade-up">
+                <div class="owl-nav slide-nav-2 text-end nav-control"></div>
+            </div>
+        </div>
+        <div class="owl-carousel doctor-slider-one owl-theme aos" data-aos="fade-up">
+            <% for (let i = 0; i < insurances.length; i++) { %>
+                <div class="item">
+                    <div class="doctor-profile-widget">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 240px;">
+                            <div class="doc-pro-img">
+                                <a href="javascript:;">
+                                    <div class="javascript:;">
+                                        <img src="./assets/images/insurance/<%= insurances[i].img %>" class="img-fluid" alt="<%= insurances[i].name %>">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="doc-content">
+                            <div class="doc-pro-info">
+                                <div class="doc-pro-name">
+                                    <a href="javascript:;"><%= insurances[i].name %></a>
+                                </div>
+                            </div>
+                            <div class="doc-pro-location">
+                                <p><i class="feather-map-pin"></i> <%= insurances[i].address %>, <%= insurances[i].city %>, <%= insurances[i].zip %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</section>
+<!-- /Insurance -->
