@@ -12,13 +12,21 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="<%= og_title %>">
     <meta property="og:description" content="<%= og_desc %>">
-    <meta property="og:image" content="./assets/images/facebook_meta.jpg">
+    <% if (page_tag === "home") { %>
+        <meta property="og:image" content="./assets/images/facebook_meta.jpg">
+    <% } else { %>
+        <meta property="og:image" content="./assets/images/meta/facebook-<%= page_tag %>.jpg">
+    <% } %>
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="<%= site_url %>">
     <meta property="twitter:url" content="<%= site_url %>">
     <meta name="twitter:title" content="<%= twitter_title %>">
     <meta name="twitter:description" content="<%= twitter_desc %>">
-    <meta name="twitter:image" content="./assets/images/twitter_meta.jpg">
+    <% if (page_tag === "home") { %>
+        <meta name="twitter:image" content="./assets/images/twitter_meta.jpg">
+    <% } else { %>
+        <meta name="twitter:image" content="./assets/images/meta/facebook-<%= page_tag %>.jpg">
+    <% } %>
     <title><%= page_title %></title>
     
     <!-- Favicon -->

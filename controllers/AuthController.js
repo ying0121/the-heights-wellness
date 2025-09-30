@@ -30,6 +30,17 @@ const { generateQRCode, saveQRode } = require("../utils/qrcode")
 // sign in page
 exports.signin = async (req, res, next) => {
     let data = {}
+
+	//
+	data.page_tag = "auth"
+	data.page_title = "THE HEIGHTS WELLNESS"
+	data.page_desc = "The Heights Wellness Medical Service"
+	data.site_url = process.env.SITE_URL
+	data.og_title = "The Heights Wellness"
+	data.og_desc = "The Heights Wellness Medical Service"
+	data.twitter_title = "The Heights Wellness"
+	data.twitter_desc = "The Heights Wellness Medical Service"
+
 	data.public_key = process.env.ENCRYPT_PUBLIC_KEY
 	data.stripe_key = process.env.STRIPE_PUBLIC_KEY
 
@@ -113,6 +124,17 @@ exports.signin = async (req, res, next) => {
 // security page
 exports.security = async (req, res, next) => {
 	let data = {}
+
+	//
+	data.page_tag = "auth"
+	data.page_title = "THE HEIGHTS WELLNESS"
+	data.page_desc = "The Heights Wellness Medical Service"
+	data.site_url = process.env.SITE_URL
+	data.og_title = "The Heights Wellness"
+	data.og_desc = "The Heights Wellness Medical Service"
+	data.twitter_title = "The Heights Wellness"
+	data.twitter_desc = "The Heights Wellness Medical Service"
+
 	data.public_key = process.env.ENCRYPT_PUBLIC_KEY
 	data.stripe_key = process.env.STRIPE_PUBLIC_KEY
 
@@ -203,6 +225,17 @@ exports.security = async (req, res, next) => {
 // sign up page
 exports.signup = async (req, res, next) => {
 	let data = {}
+
+	//
+	data.page_tag = "auth"
+	data.page_title = "THE HEIGHTS WELLNESS"
+	data.page_desc = "The Heights Wellness Medical Service"
+	data.site_url = process.env.SITE_URL
+	data.og_title = "The Heights Wellness"
+	data.og_desc = "The Heights Wellness Medical Service"
+	data.twitter_title = "The Heights Wellness"
+	data.twitter_desc = "The Heights Wellness Medical Service"
+
 	data.public_key = process.env.ENCRYPT_PUBLIC_KEY
 	data.stripe_key = process.env.STRIPE_PUBLIC_KEY
 
@@ -288,6 +321,17 @@ exports.signup = async (req, res, next) => {
 // help page
 exports.help = async (req, res, next) => {
 	let data = {}
+
+	//
+	data.page_tag = "auth"
+	data.page_title = "THE HEIGHTS WELLNESS"
+	data.page_desc = "The Heights Wellness Medical Service"
+	data.site_url = process.env.SITE_URL
+	data.og_title = "The Heights Wellness"
+	data.og_desc = "The Heights Wellness Medical Service"
+	data.twitter_title = "The Heights Wellness"
+	data.twitter_desc = "The Heights Wellness Medical Service"
+
 	data.public_key = process.env.ENCRYPT_PUBLIC_KEY
 	data.stripe_key = process.env.STRIPE_PUBLIC_KEY
 
@@ -380,6 +424,17 @@ exports.verify = async (req, res, next) => {
 
 		if (links) { // valid link
 			let data = {}
+
+			//
+			data.page_tag = "auth"
+			data.page_title = "THE HEIGHTS WELLNESS"
+			data.page_desc = "The Heights Wellness Medical Service"
+			data.site_url = process.env.SITE_URL
+			data.og_title = "The Heights Wellness"
+			data.og_desc = "The Heights Wellness Medical Service"
+			data.twitter_title = "The Heights Wellness"
+			data.twitter_desc = "The Heights Wellness Medical Service"
+
 			data.v = verify_url
 
 			data.public_key = process.env.ENCRYPT_PUBLIC_KEY

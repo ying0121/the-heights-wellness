@@ -79,7 +79,7 @@
                     <li class="<%= page_tag == "letters" ? "active" : "" %>"><a href="./letters"><%= component_text.menu_letters %></a></li>
                     <li class="<%= page_tag == "orientation" ? "active" : "" %>"><a href="./orientation"><%= component_text.menu_orientation %></a></li>
                     <li class="<%= page_tag == "community-resources" ? "active" : "" %>"><a href="./community-resources"><%= component_text.menu_community_resources %></a></li>
-                    <li class="has-submenu">
+                    <li class="has-submenu <%= page_tag == "educations" ? "active" : "" %>">
                         <a href="javascript:;"><%= component_text.menu_education %> <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
                             <li><a href="./educations?p=asthma"><%= component_text.menu_asthma %></a></li>

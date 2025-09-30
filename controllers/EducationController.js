@@ -18,6 +18,17 @@ const { generateQRCode } = require("../utils/qrcode")
 
 exports.render = async (req, res, next) => {
 	let data = {}
+
+	//
+	data.page_tag = "educations"
+	data.page_title = "THE HEIGHTS WELLNESS"
+	data.page_desc = "The Heights Wellness Medical Service"
+	data.site_url = process.env.SITE_URL
+	data.og_title = "The Heights Wellness"
+	data.og_desc = "The Heights Wellness Medical Service"
+	data.twitter_title = "The Heights Wellness"
+	data.twitter_desc = "The Heights Wellness Medical Service"
+
 	data.public_key = process.env.ENCRYPT_PUBLIC_KEY
 	data.stripe_key = process.env.STRIPE_PUBLIC_KEY
 
@@ -130,5 +141,5 @@ exports.render = async (req, res, next) => {
 		}
 	}
 	
-	res.render('educations', data)
+	res.render('layout', data)
 }
