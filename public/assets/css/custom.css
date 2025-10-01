@@ -22452,7 +22452,7 @@ a.mute-video.stop {
   -ms-transform: rotateY(360deg);
   background: #ffffff;
 }
-.main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover .service-icon img {
+.main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover .service-icon i {
   filter: invert(1) brightness(100);
 }
 .main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover h4, .main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover p {
@@ -26772,11 +26772,11 @@ a.mute-video.stop {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
 }
 .features-section-sixteen .feature-sixteen-main .feature-six-img:hover .feature-content-six {
-  top: 30%;
+  top: 10%;
 }
 @media (max-width: 1399.98px) {
   .features-section-sixteen .feature-sixteen-main .feature-six-img:hover .feature-content-six {
-    top: 10%;
+    top: 5%;
   }
 }
 .features-section-sixteen .feature-sixteen-main .feature-six-img:hover .feature-content-six .feature-content-one {

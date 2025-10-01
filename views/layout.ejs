@@ -13,9 +13,9 @@
     <meta property="og:title" content="<%= og_title %>">
     <meta property="og:description" content="<%= og_desc %>">
     <% if (page_tag === "home") { %>
-        <meta property="og:image" content="./assets/images/facebook_meta.jpg">
+        <meta property="og:image" content="<%= site_url %>/assets/images/facebook_meta.jpg">
     <% } else { %>
-        <meta property="og:image" content="./assets/images/meta/facebook-<%= page_tag %>.jpg">
+        <meta property="og:image" content="<%= site_url %>/assets/meta/facebook-<%= page_tag %>.jpg">
     <% } %>
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="<%= site_url %>">
@@ -23,36 +23,36 @@
     <meta name="twitter:title" content="<%= twitter_title %>">
     <meta name="twitter:description" content="<%= twitter_desc %>">
     <% if (page_tag === "home") { %>
-        <meta name="twitter:image" content="./assets/images/twitter_meta.jpg">
+        <meta name="twitter:image" content="<%= site_url %>/assets/images/twitter_meta.jpg">
     <% } else { %>
-        <meta name="twitter:image" content="./assets/images/meta/facebook-<%= page_tag %>.jpg">
+        <meta name="twitter:image" content="<%= site_url %>/assets/meta/twitter-<%= page_tag %>.jpg">
     <% } %>
     <title><%= page_title %></title>
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<%= site_url %>/assets/images/favicon.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/bootstrap.min.css">
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="./assets/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="./assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/plugins/fontawesome/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Feathericon CSS -->
-    <link rel="stylesheet" href="./assets/css/feather.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/feather.css">
     <!-- Datepicker CSS -->
-    <link rel="stylesheet" href="./assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/bootstrap-datetimepicker.min.css">
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/owl.carousel.min.css">
     <!-- Animation CSS -->
-    <link rel="stylesheet" href="./assets/css/aos.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/aos.css">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/custom.css">
     <!-- Need Popup CSS -->
-    <link rel="stylesheet" href="./assets/css/needpopup.min.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/needpopup.min.css">
     <!-- Index CSS -->
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="<%= site_url %>/assets/css/index.css">
 </head>	
 <!-- /Include Head Info -->
 
@@ -380,7 +380,7 @@
     </div>
     <!-- /Payment Modal -->
     <!-- Service Modal -->
-    <% if (page_tag === "home") { %>
+    <% if (page_tag === "home" || page_tag === "services") { %>
         <div class="modal fade custom-modal" id="service_request_modal">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -470,14 +470,113 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="service_request_modal_send" data-bs-ripple-init><%= component_text.t_request %></button>
-                        <button type="button" class="btn btn-danger" id="service_request_modal_close" data-bs-ripple-init data-bs-dismiss="modal"><%= component_text.c_item_close %></button>
+                        <button type="button" class="btn btn-primary" id="service_request_modal_send"><%= component_text.t_request %></button>
+                        <button type="button" class="btn btn-danger" id="service_request_modal_close" data-bs-dismiss="modal"><%= component_text.c_item_close %></button>
                     </div>
                 </div>
             </div>
         </div>
     <% } %>
     <!-- /Service Modal -->
+    <!-- Letter Modal -->
+     <% if (page_tag === "letters") { %>
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="letter_request_modal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <input type="hidden" id="letter_name" />
+                    <div class="modal-header">
+                        <p class="h4 m-0 mx-1" id="letter_title"><%= component_text.t_request_letter %></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <div class="form-focus">
+                                    <input type="text" id="letter-fname" class="form-control floating" required />
+                                    <label class="focus-label" for="letter-fname"><%= component_text.placeholder_first_name %></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-focus">
+                                    <input type="text" id="letter-lname" class="form-control floating" required />
+                                    <label class="focus-label" for="letter-lname"><%= component_text.placeholder_last_name %></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-focus">
+                                    <input type="text" id="letter-dob" class="form-control floating datetimepicker" required />
+                                    <label class="focus-label" for="letter-dob"><%= component_text.placeholder_dob %></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-focus">
+                                    <input type="text" id="letter-email" class="form-control floating" required />
+                                    <label class="focus-label" for="letter-email"><%= component_text.placeholder_email %></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-focus">
+                                    <input type="text" id="letter-phone" class="form-control floating" required />
+                                    <label class="focus-label" for="letter-phone"><%= component_text.placeholder_phone %></label>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <textarea class="form-control" id="letter-message" rows="5" placeholder="<%= component_text.placeholder_message %>"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <hr class="my-3" />
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <p class="fs-6 my-1"><%= component_text.t_opt_in_out_header %></p>
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="opt_status" id="letter-opt_in" value="1" checked />
+                                        <label class="form-check-label" for="letter-opt_in"> <%= component_text.t_opt_in_out_in %> </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="opt_status" id="letter-opt_out" value="0" />
+                                        <label class="form-check-label" for="letter-opt_out"> <%= component_text.t_opt_in_out_out %> </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="fs-6 m-0"><%- component_text.t_opt_in_out_more %></p>
+                                </div>
+                                <div class="col-md-12 d-none" id="letter_opt_moreinfo">
+                                    <p class="fs-6"><%- component_text.t_opt_in_out_footer %></p>
+                                </div>
+                                <div class="col-md-12">
+                                    <a href="#" id="letter_opt_more_info_btn"><%= component_text.t_opt_more_info %> >></a>
+                                </div>
+                            </div>
+                            <hr class="my-4" />
+                            <div class="row justify-content-start align-items-center">
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-between align-items-center gap-1">
+                                        <div id="letter_captcha_image"><%- letter_captcha_image %></div>
+                                        <i id="letter_captcha_change" class="fa fa-lg fa-rotate-right fs-2 text-primary" style="cursor: pointer;"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-focus">
+                                        <input type="text" id="letter-captcha" class="form-control floating" />
+                                        <label class="focus-label" for="captcha"><%= component_text.placeholder_captcha %></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="letter_request_modal_send"><%= component_text.t_request %></button>
+                        <button type="button" class="btn btn-danger" id="letter_request_modal_close" data-bs-dismiss="modal"><%= component_text.c_item_close %></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <!-- Letter Modal -->
     <!-- /Modals -->
 
     <!-- ScrollToTop -->
@@ -489,7 +588,7 @@
     <!-- /ScrollToTop -->
 
     <!-- jQuery -->
-    <script src="./assets/js/jquery-3.7.0.min.js"></script>
+    <script src="<%= site_url %>/assets/js/jquery-3.7.0.min.js"></script>
     <!-- Captcha API -->
     <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
     <!-- JS Encrypt API -->
@@ -497,28 +596,28 @@
     <!-- Stripe API -->
     <script src="https://js.stripe.com/v3/"></script>
     <!-- Bootstrap Bundle JS -->
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="<%= site_url %>/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Feather Icon JS -->
-    <script src="./assets/js/feather.min.js"></script>
+    <script src="<%= site_url %>/assets/js/feather.min.js"></script>
     <!-- Datepicker JS -->
-    <script src="./assets/js/moment.min.js"></script>
-    <script src="./assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="<%= site_url %>/assets/js/moment.min.js"></script>
+    <script src="<%= site_url %>/assets/js/bootstrap-datetimepicker.min.js"></script>
     <!-- Owl Carousel JS -->
-    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="<%= site_url %>/assets/js/owl.carousel.min.js"></script>
     <!-- Slick JS -->
-    <script src="./assets/js/slick.js"></script>
+    <script src="<%= site_url %>/assets/js/slick.js"></script>
     <!-- Animation JS -->
-    <script src="./assets/js/aos.js"></script>
+    <script src="<%= site_url %>/assets/js/aos.js"></script>
     <!-- BacktoTop JS -->
-    <script src="./assets/js/backToTop.js"></script>
+    <script src="<%= site_url %>/assets/js/backToTop.js"></script>
     <!-- Custom JS -->
-    <script src="./assets/js/script.js"></script>
+    <script src="<%= site_url %>/assets/js/script.js"></script>
     <!-- Need Popup JS -->
-    <script src="./assets/js/needpopup.min.js"></script>
+    <script src="<%= site_url %>/assets/js/needpopup.min.js"></script>
     <!-- Lottie Files -->
-    <script src="./assets/js/lottie.min.js"></script>
+    <script src="<%= site_url %>/assets/js/lottie.min.js"></script>
     <!-- Counter JS (We use if counter component is existed) -->
-    <!-- <script src="./assets/js/counter.js"></script> -->
+    <!-- <script src="<%= site_url %>/assets/js/counter.js"></script> -->
 
     <!-- Layout Script -->
     <%- include("js/layout-js") %>

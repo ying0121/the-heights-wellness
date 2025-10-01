@@ -1,0 +1,54 @@
+<!-- Hero Parallax Video -->
+<% let index = Math.floor(Math.random() * 3) + 1 %>
+<div class="video-parallax-container">
+    <video class="parallax-video" autoplay muted loop playsinline>
+        <source src="./assets/videos/service<%= index %>.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- Letter Title -->
+     <div class="container video-content aos" data-aos="fade-left">
+        <h1 class="text-white-50"><%= component_text.menu_letters %></h1>
+        <p class="text-white"><%= component_text.t_letter_desc %></p>
+    </div>=
+    <!-- /Letter Title -->
+</div>
+<!-- /Hero Parallax Video -->
+<!-- Letter Section -->
+<section class="main-wrapper home-twelve">
+    <div class="services-section-fourteen">
+        <div class="floating-bg">
+            <img src="./assets/images/bg/big-paw.png" alt="paw-image" >
+            <img src="./assets/images/bg/two-paw.png" alt="paw-image" >
+            <img src="./assets/images/bg/small-paw.png" alt="paw-image" >
+        </div>
+        <div class="container">
+            <div class="row row-gap justify-content-center">
+                <% for (let i = 0; i < letters.length; i++) { %>
+                    <div class="col-lg-3 col-md-4 col-sm-12 d-flex">
+                        <div class="our-services-list w-100">
+                            <div style="position: relative;">
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <% if (letters[i].online_payment == 1) { %>
+                                        <i class="fa-solid fa-crown text-warning fs-4"></i>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="service-icon">
+                                <i class="fa fa-<%= letters[i].icon %> text-white" style="font-size: 80px;"></i>
+                            </div>
+                            <h4><%= letters[i].title %></h4>
+                            <div class="mb-2"><p><%- letters[i].short_desc %></p></div>
+                            <div class="d-flex justify-content-around align-items-center" style="position:relative;">
+                                <button data-bs-toggle="modal" data-bs-target="#payment-modal" class="d-none" id="show-letter-payment-modal-btn"></button>
+                                <button data-bs-toggle="modal" data-bs-target="#letter_request_modal" class="d-none" id="show-letter-modal-btn"></button>
+                                <a href="javascript:;" class="text-primary letter_request fs-5" data-id="<%= letters[i].id %>" data-title="<%= letters[i].title %>"><%= component_text.t_request %></a>
+                                <a href="./letters/detail?s=<%= letters[i].id %>" class="fs-5 text-info" target="_blank"><%= component_text.btn_read_more %></a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Letter Section -->

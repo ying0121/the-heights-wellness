@@ -41,7 +41,7 @@ exports.render = async (req, res, next) => {
 	data.language = siteLang
 	
 	const captcha = await getCaptcha(6, 0, false)
-	data.captcha_image = captcha.captcha
+	data.letter_captcha_image = captcha.captcha
 	req.session.ying = captcha.key
 
 	const footer_captcha = await getCaptcha(6, 0, false)
@@ -223,4 +223,9 @@ exports.render = async (req, res, next) => {
 	}
 	
 	res.render('layout', data)
+}
+
+exports.getCost = async (req, res, next) => {
+	const cost = await Letters.findOne({ attributes: ["cost"], where: { id: req.body.id } })
+	res.status(200).json({ cost: cost.cost })
 }

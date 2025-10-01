@@ -50,7 +50,7 @@ exports.render = async (req, res, next) => {
 	data.language = siteLang
 	
 	const captcha = await getCaptcha(6, 0, false)
-	data.captcha_image = captcha.captcha
+	data.service_captcha_image = captcha.captcha
 	req.session.ying = captcha.key
 
 	const footer_captcha = await getCaptcha(6, 0, false)
