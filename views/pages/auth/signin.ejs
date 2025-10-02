@@ -1,154 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<%- include('../includes') %>
-
-<style>
-    /* input-shake */
-    @keyframes shake {
-        0% { transform: translateX(0); }
-        20% { transform: translateX(-7px); }
-        40% { transform: translateX(5px); }
-        60% { transform: translateX(-3px); }
-        80% { transform: translateX(1px); }
-        100% { transform: translateX(0); }
-    }
-
-    .shake {
-        animation: shake 0.4s ease-in-out;
-    }
-</style>
-
-<body>
-    <!-- Header -->
-    <%- include('../header') %>
-    <!-- Main -->
-    <main>
-        <div id="intro" class="bg-image shadow-2-strong parallax-container">
-            <div class="mask d-flex align-items-center min-h-100" style="background-color: rgba(0, 0, 0, 0.8);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-6 col-md-8 bg-white rounded shadow-5-strong p-4">
-                            <!-- Title -->
-                            <div class="w-100 d-flex justify-content-center align-items-center">
-                                <div id="signin-lottie" style="width: 150px; height: 150px;"></div>
-                            </div>
-                            <!-- Desc -->
-                            <div class="fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_si_welcome %></div>
-                            <!-- Alert Begin -->
-                            <div class="alert alert-danger d-none" data-bs-alert-init id="alert-message"></div>
-                            <!-- Form Begin -->
-                            <div>
-                                <!-- Email input -->
-                                <div class="form-outline mb-4" data-bs-input-init id="name-container">
-                                    <input type="text" name="text" id="name" class="form-control form-control-lg" />
-                                    <label class="form-label" for="name"><%= component_text.placeholder_login_name %></label>
-                                </div>
-                                <!-- Password input -->
-                                <div class="form-outline mb-4" data-bs-input-init id="password-container">
-                                    <input type="password" name="password" id="password" class="form-control form-control-lg" />
-                                    <label class="form-label" for="password"><%= component_text.placeholder_password %></label>
-                                </div>
-                                <!-- Submit button -->
-                                <button id="submit" name="action" value="signin" class="btn btn-danger btn-block py-3" data-bs-ripple-init><%= component_text.btn_login %></button>
-                            </div>
-                            <!-- Help Buttons -->
-                            <div class="row pt-4">
-                                <div class="col-md-12 d-flex justify-content-end">
-                                    <a href="./help" class="btn btn-link text-danger" role="button"><%= component_text.t_pa_ah_help %></a>
-                                    <a href="./signup" class="btn btn-link text-danger" role="button"><span><%= component_text.btn_signup %></span></a>
-                                </div>
-                            </div>
-                            <!-- Form End -->
-                            <hr class="my-1" />
-                            <p class="m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
+<div id="intro" class="bg-image shadow-2-strong parallax-container">
+    <div class="mask d-flex align-items-center min-h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-md-8 bg-white rounded shadow-5-strong p-4">
+                    <!-- Title -->
+                    <div class="w-100 d-flex justify-content-center align-items-center">
+                        <div id="signin-lottie" style="width: 150px; height: 150px;"></div>
+                    </div>
+                    <!-- Desc -->
+                    <div class="fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_si_welcome %></div>
+                    <!-- Alert Begin -->
+                    <div class="alert alert-danger d-none" data-bs-alert-init id="alert-message"></div>
+                    <!-- Form Begin -->
+                    <div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4" data-bs-input-init id="name-container">
+                            <input type="text" name="text" id="name" class="form-control form-control-lg" />
+                            <label class="form-label" for="name"><%= component_text.placeholder_login_name %></label>
+                        </div>
+                        <!-- Password input -->
+                        <div class="form-outline mb-4" data-bs-input-init id="password-container">
+                            <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                            <label class="form-label" for="password"><%= component_text.placeholder_password %></label>
+                        </div>
+                        <!-- Submit button -->
+                        <button id="submit" name="action" value="signin" class="btn btn-danger btn-block py-3" data-bs-ripple-init><%= component_text.btn_login %></button>
+                    </div>
+                    <!-- Help Buttons -->
+                    <div class="row pt-4">
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <a href="./help" class="btn btn-link text-danger" role="button"><%= component_text.t_pa_ah_help %></a>
+                            <a href="./signup" class="btn btn-link text-danger" role="button"><span><%= component_text.btn_signup %></span></a>
                         </div>
                     </div>
+                    <!-- Form End -->
+                    <hr class="my-1" />
+                    <p class="m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
                 </div>
             </div>
         </div>
-    </main>
-    <!-- Footer -->
-    <%- include('../footer') %>
-</body>
-
-<script>
-  lottie.loadAnimation({
-    container: document.getElementById('signin-lottie'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: './assets/animations/lock-blue.json'
-  });
-</script>
-
-<script>
-    function showAlert(title, message, type) {
-        if (title) {
-            Swal.fire({
-                title: title,
-                text: message,
-                icon: type,
-                confirmButtonText: 'Close'
-            })
-        } else {
-            Swal.fire({
-                text: message,
-                icon: type,
-                confirmButtonText: 'Close'
-            })
-        }
-    }
-
-    $(document).ready(function () {
-        $("#submit").click(function (e) {
-            e.preventDefault()
-
-            const params = {
-                name: $("#name").val(),
-                password: $("#password").val()
-            }
-
-            if (!params.name) {
-                const input = document.getElementById('name-container')
-                input.classList.remove('shake')
-                void input.offsetWidth // <== Force reflow
-                input.classList.add('shake')
-
-                input.focus()
-                return
-            }
-            if (!params.password) {
-                const input = document.getElementById('password-container')
-                input.classList.remove('shake')
-                void input.offsetWidth // <== Force reflow
-                input.classList.add('shake')
-
-                input.focus()
-                return
-            }
-
-            $.post({
-                url: "./confirmSignIn",
-                data: params,
-                dataType: "json",
-                success: function (res) {
-                    if (res.status === "success") {
-                        window.location.href = res.url
-                    } else {
-                        $("#alert-message").removeClass("shake")
-                        $("#alert-message").html(res.error_message)
-                        $("#alert-message").addClass("shake")
-                        $("#alert-message").removeClass("d-none")
-                    }
-                }, error: function (xhr, status, error) {
-                    showAlert("", "<%= component_text.t_pa_ah_alert_failed %>", "error")
-                }
-            })
-            
-        })
-        
-    })
-</script>
-
-</html>
+    </div>
+</div>

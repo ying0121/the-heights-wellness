@@ -32,7 +32,7 @@ exports.signin = async (req, res, next) => {
     let data = {}
 
 	//
-	data.page_tag = "auth"
+	data.page_tag = "auth/signin"
 	data.page_title = "THE HEIGHTS WELLNESS"
 	data.page_desc = "The Heights Wellness Medical Service"
 	data.site_url = process.env.SITE_URL
@@ -119,14 +119,14 @@ exports.signin = async (req, res, next) => {
 	qrcode_text += `FAX : ${data.contact_info.fax}`
 	data.footer_qrcode = await generateQRCode(qrcode_text)
 
-	res.render('auth/signin', data)
+	res.render('layout', data)
 }
 // security page
 exports.security = async (req, res, next) => {
 	let data = {}
 
 	//
-	data.page_tag = "auth"
+	data.page_tag = "auth/security"
 	data.page_title = "THE HEIGHTS WELLNESS"
 	data.page_desc = "The Heights Wellness Medical Service"
 	data.site_url = process.env.SITE_URL
@@ -219,7 +219,7 @@ exports.security = async (req, res, next) => {
 	if (!req.session.question) {
 		res.redirect("login")
 	} else {
-		res.render('auth/security', data)
+		res.render('layout', data)
 	}
 }
 // sign up page
@@ -227,7 +227,7 @@ exports.signup = async (req, res, next) => {
 	let data = {}
 
 	//
-	data.page_tag = "auth"
+	data.page_tag = "auth/signup"
 	data.page_title = "THE HEIGHTS WELLNESS"
 	data.page_desc = "The Heights Wellness Medical Service"
 	data.site_url = process.env.SITE_URL
@@ -316,14 +316,14 @@ exports.signup = async (req, res, next) => {
 	qrcode_text += `FAX : ${data.contact_info.fax}`
 	data.footer_qrcode = await generateQRCode(qrcode_text)
 
-	res.render('auth/signup', data)
+	res.render('layout', data)
 }
 // help page
 exports.help = async (req, res, next) => {
 	let data = {}
 
 	//
-	data.page_tag = "auth"
+	data.page_tag = "auth/help"
 	data.page_title = "THE HEIGHTS WELLNESS"
 	data.page_desc = "The Heights Wellness Medical Service"
 	data.site_url = process.env.SITE_URL
@@ -410,7 +410,7 @@ exports.help = async (req, res, next) => {
 	qrcode_text += `FAX : ${data.contact_info.fax}`
 	data.footer_qrcode = await generateQRCode(qrcode_text)
 
-	res.render('auth/help', data)
+	res.render('layout', data)
 }
 // verify page
 exports.verify = async (req, res, next) => {
@@ -426,7 +426,7 @@ exports.verify = async (req, res, next) => {
 			let data = {}
 
 			//
-			data.page_tag = "auth"
+			data.page_tag = "auth/verify"
 			data.page_title = "THE HEIGHTS WELLNESS"
 			data.page_desc = "The Heights Wellness Medical Service"
 			data.site_url = process.env.SITE_URL
@@ -514,7 +514,7 @@ exports.verify = async (req, res, next) => {
 			qrcode_text += `FAX : ${data.contact_info.fax}`
 			data.footer_qrcode = await generateQRCode(qrcode_text)
 
-			return res.render('auth/verify', data)
+			return res.render('layout', data)
 		} else { // invlid link
 			return res.render("404")
 		}
