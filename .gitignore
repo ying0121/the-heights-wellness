@@ -1,6 +1,3 @@
 /node_modules
-/uploads
-api.js
-util.js
 .env
 package-lock.json

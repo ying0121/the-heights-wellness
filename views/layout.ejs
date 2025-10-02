@@ -53,6 +53,8 @@
     <link rel="stylesheet" href="<%= site_url %>/assets/css/needpopup.min.css">
     <!-- Index CSS -->
     <link rel="stylesheet" href="<%= site_url %>/assets/css/index.css">
+    <!-- Fancybox CSS -->
+	<link rel="stylesheet" href="<%= site_url %>/assets/plugins/fancybox/jquery.fancybox.min.css">
 </head>	
 <!-- /Include Head Info -->
 
@@ -479,7 +481,7 @@
     <% } %>
     <!-- /Service Modal -->
     <!-- Letter Modal -->
-     <% if (page_tag === "letters") { %>
+    <% if (page_tag === "letters") { %>
         <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="letter_request_modal">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -577,6 +579,27 @@
         </div>
     <% } %>
     <!-- Letter Modal -->
+    <!-- Education Video View Modal -->
+    <% if (page_tag === "educations") { %>
+        <div class="modal fade modal-content-video" id="education-video-modal" tabindex="-1" aria-labelledby="video">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="video-home">
+                            <video controls id="promovideo">
+                                <iframe src="" id="education-video-frame"></iframe>
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <!-- /Education Video View Modal -->
     <!-- /Modals -->
 
     <!-- ScrollToTop -->
@@ -616,6 +639,8 @@
     <script src="<%= site_url %>/assets/js/needpopup.min.js"></script>
     <!-- Lottie Files -->
     <script src="<%= site_url %>/assets/js/lottie.min.js"></script>
+    <!-- Fancybox -->
+	<script src="<%= site_url %>/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
     <!-- Counter JS (We use if counter component is existed) -->
     <!-- <script src="<%= site_url %>/assets/js/counter.js"></script> -->
 

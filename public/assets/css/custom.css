@@ -9662,6 +9662,12 @@ html.menu-opened body {
   -ms-transition: 0.4s;
   transition: 0.4s;
 }
+.specialities-section-one .specialities-img span i {
+  width: auto;
+  -webkit-transition: 0.4s;
+  -ms-transition: 0.4s;
+  transition: 0.4s;
+}
 .specialities-section-one .specialities-btn {
   text-align: center;
 }

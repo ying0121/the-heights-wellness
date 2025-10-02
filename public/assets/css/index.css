@@ -426,3 +426,50 @@ form {
     overflow: hidden;
     background-attachment: fixed;
 }
+
+/* video */
+.video-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 300px;
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    padding: 12px 15px;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.preview-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+}

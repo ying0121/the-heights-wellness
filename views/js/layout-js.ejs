@@ -31,6 +31,17 @@
         'TheClinic': ['DEFAULT_POSITION']
     }
 
+    $('.contactpttype-institution').addClass('d-none')
+    $('.contactusertype').click((e) => {
+        if (e.target.value == 1) {
+            $('.contactpttype-patient').removeClass('d-none')
+            $('.contactpttype-institution').addClass('d-none')
+        } else if (e.target.value == 2) {
+            $('.contactpttype-patient').addClass('d-none')
+            $('.contactpttype-institution').removeClass('d-none')
+        }
+    })
+
     function mynotify(type, message) {
         Swal.fire({
             text: message,
