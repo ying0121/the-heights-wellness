@@ -1,14 +1,18 @@
-<div id="intro" class="bg-image shadow-2-strong parallax-container">
-    <div class="mask d-flex align-items-center min-h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+<div class="parallax-container vh-100">
+    <video class="parallax-video" autoplay muted loop playsinline>
+        <source src="./assets/videos/lock.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="d-flex align-items-center vh-100 video-blur">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-6 col-md-8 bg-white rounded shadow-5-strong p-4">
+                <div class="col-xl-6 col-md-8 rounded p-4 aos" data-aos="fade-up" style="background-color: #10101060; border: 1px solid #FAFAFA80;">
                     <!-- Title -->
                     <div class="w-100 d-flex justify-content-center align-items-center">
                         <div id="security-lottie" style="width: 150px; height: 150px;"></div>
                     </div>
                     <!-- Desc -->
-                    <div class="fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_si_welcome %></div>
+                    <div class="text-white fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_si_welcome %></div>
                     <!-- Alert Begin -->
                     <div class="alert alert-danger d-none" data-bs-alert-init id="alert-message"></div>
                     <!-- Alert End -->
@@ -16,17 +20,17 @@
                     <!-- Form Begin -->
                     <div>
                         <!-- Answer input -->
-                        <div class="form-outline mb-4" data-bs-input-init>
-                            <i class="far fa-eye trailing fa-fw pe-auto cursor-pointer" id="password-icon"></i>
-                            <input type="text" name="answer" id="password" class="form-control form-control-lg form-icon-trailing" />
-                            <label class="form-label" for="password"><%= component_text.placeholder_answer_security %></label>
+                        <div class="pass-group form-focus mb-4">
+                            <input type="text" name="answer" id="password" class="form-control floating pass-input bg-transparent text-white" />
+                            <label class="focus-label" for="password"><%= component_text.placeholder_answer_security %></label>
+                            <span class="feather-eye toggle-password text-white"></span>
                         </div>
                         <!-- Submit button -->
-                        <button name="submit" id="submit" class="btn btn-danger btn-block py-3" data-bs-ripple-init><%= component_text.btn_submit %></button>
+                        <button name="submit" id="submit" class="btn btn-rounded btn-outline-info w-100 py-2"><%= component_text.btn_submit %></button>
                     </div>
                     <!-- Form End -->
                     <hr class="my-1" />
-                    <p class="m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
+                    <p class="text-white m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
                 </div>
             </div>
         </div>

@@ -177,20 +177,6 @@
         // need popup
         needPopup.init()
 
-        $(".owl-carousel-staff").owlCarousel({
-            autoPlay: 2500,
-            items: 3,
-            itemsDesktop: [1199, 2],
-            itemsDesktopSmall: [979, 1]
-        })
-
-        $(".owl-carousel-review").owlCarousel({
-            autoPlay: 3000,
-            items: 3,
-            itemsDesktop: [1199, 2],
-            itemsDesktopSmall: [979, 1]
-        })
-
         $(".popup").click(() => {
             var popup = document.getElementById("alert-details")
             popup.classList.toggle("show")

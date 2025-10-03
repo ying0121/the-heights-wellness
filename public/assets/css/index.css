@@ -315,6 +315,9 @@ form {
 }
 
 /* video parallax */
+.video-blur {
+    backdrop-filter: brightness(0.7) blur(10px);
+}
 .video-parallax-container {
     position: relative;
     height: 100vh;
@@ -334,7 +337,6 @@ form {
     object-fit: cover;
     z-index: -1;
     transform: translateZ(0);
-    filter: brightness(0.7) blur(1px);
 }
 
 @media (min-width: 768px) {
@@ -472,4 +474,8 @@ form {
     font-weight: bold;
     text-align: center;
     z-index: 1;
+}
+
+.placeholder-white {
+    color: white;
 }

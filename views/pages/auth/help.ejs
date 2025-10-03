@@ -1,14 +1,18 @@
-<div id="intro" class="bg-image shadow-2-strong parallax-container">
-    <div class="mask d-flex align-items-center min-h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+<div class="parallax-container vh-100">
+    <video class="parallax-video" autoplay muted loop playsinline>
+        <source src="./assets/videos/lock.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="d-flex align-items-center vh-100 video-blur">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-6 col-md-8 bg-white rounded shadow-5-strong p-4">
+                <div class="col-xl-6 col-md-8 rounded p-4 aos" data-aos="fade-up" style="background-color: #10101060; border: 1px solid #FAFAFA80;">
                     <!-- Title -->
                     <div class="w-100 d-flex justify-content-center align-items-center">
                         <div id="help-lottie" style="width: 150px; height: 150px;"></div>
                     </div>
                     <!-- Desc -->
-                    <div class="fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_ah_hques %></div>
+                    <div class="text-white fw-bold mb-2 mx-3 fs-5"><%= component_text.t_pa_ah_hques %></div>
                     <!-- Alert Begin -->
                     <div class="alert alert-danger d-none" data-bs-alert-init id="alert-message"></div>
                     <!-- Alert End -->
@@ -19,42 +23,42 @@
                                 <!-- Forgot Account Radio -->
                                 <div class="form-check mb-4">
                                     <input class="form-check-input forgot_type" type="radio" value="1" name="forgot_type" id="forgot_account" checked />
-                                    <label class="form-check-label" for="forgot_account"><%= component_text.t_pa_ah_facc %></label>
+                                    <label class="form-check-label text-white" for="forgot_account"><%= component_text.t_pa_ah_facc %></label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <!-- Forgot Pasword Radio -->
                                 <div class="form-check mb-4">
                                     <input class="form-check-input forgot_type" type="radio" value="2" name="forgot_type" id="forgot_password" />
-                                    <label class="form-check-label" for="forgot_password"><%= component_text.t_pa_ah_fpwd %></label>
+                                    <label class="form-check-label text-white" for="forgot_password"><%= component_text.t_pa_ah_fpwd %></label>
                                 </div>
                             </div>
                             <div class="col-md-6 forgot-account">
                                 <!-- First Name Input -->
-                                <div class="form-outline mb-4" data-bs-input-init id="fname-container">
-                                    <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" />
-                                    <label class="form-label" for="first_name"><%= component_text.placeholder_first_name %></label>
+                                <div class="form-focus mb-4" id="fname-container">
+                                    <input type="text" name="first_name" id="first_name" class="form-control floating text-white bg-transparent" />
+                                    <label class="focus-label text-white" for="first_name"><%= component_text.placeholder_first_name %></label>
                                 </div>
                             </div>
                             <div class="col-md-6 forgot-account">
                                 <!-- Last Name Input -->
-                                <div class="form-outline mb-4" data-bs-input-init id="lname-container">
-                                    <input type="text" name="last_name" id="last_name" class="form-control form-control-lg" />
-                                    <label class="form-label" for="last_name"><%= component_text.placeholder_last_name %></label>
+                                <div class="form-focus mb-4" id="lname-container">
+                                    <input type="text" name="last_name" id="last_name" class="form-control floating text-white bg-transparent" />
+                                    <label class="focus-label text-white" for="last_name"><%= component_text.placeholder_last_name %></label>
                                 </div>
                             </div>
                             <div class="col-md-12 forgot-account">
                                 <!-- Birthday Input -->
-                                <div class="form-outline mb-4" data-bs-input-init id="dob-container">
-                                    <input type="date" name="dob" id="dob" class="form-control form-control-lg" />
-                                    <label class="form-label" for="dob"><%= component_text.placeholder_dob %></label>
+                                <div class="form-focus mb-4" id="dob-container">
+                                    <input type="text" name="dob" id="help-dob" class="form-control floating text-white bg-transparent datetimepicker" />
+                                    <label class="focus-label text-white" for="help-dob"><%= component_text.placeholder_dob %></label>
                                 </div>
                             </div>
                             <div class="col-md-12 forgot-password d-none">
                                 <!-- Email input -->
-                                <div class="form-outline mb-4" data-bs-input-init id="email-container">
-                                    <input type="text" name="email" id="email" class="form-control form-control-lg" />
-                                    <label class="form-label" for="email"><%= component_text.placeholder_login_name %></label>
+                                <div class="form-focus mb-4" id="email-container">
+                                    <input type="text" name="email" id="email" class="form-control floating text-white bg-transparent datetimepicker" />
+                                    <label class="focus-label text-white" for="email"><%= component_text.placeholder_login_name %></label>
                                 </div>
                             </div>
                             <!-- Image Captcha -->
@@ -67,26 +71,26 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-outline" data-bs-input-init id="captcha-container">
-                                            <input type="password" id="captcha" name="captcha" class="form-control form-control-lg" />
-                                            <label class="form-label" for="contact_captcha"><%= component_text.placeholder_captcha %></label>
+                                        <div class="form-focus" id="captcha-container">
+                                            <input type="password" id="captcha" name="captcha" class="form-control floating text-white bg-transparent datetimepicker" />
+                                            <label class="focus-label text-white" for="contact_captcha"><%= component_text.placeholder_captcha %></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Submit button -->
-                        <button id="submit" name="action" value="submit" class="btn btn-danger btn-block py-3" role="button" data-bs-ripple-init><%= component_text.btn_submit %></button>
+                        <button id="submit" name="action" value="submit" class="btn btn-rounded btn-outline-info w-100 py-2" role="button" data-bs-ripple-init><%= component_text.btn_submit %></button>
                         <!-- Help Buttons -->
                         <div class="row pt-4">
-                            <div class="col-md-12 d-flex justify-content-end">
-                                <a href="./login" class="btn btn-link text-danger" role="button" data-bs-ripple-init><span><%= component_text.link_sign_in %></span></a>
+                            <div class="col-md-12 d-flex justify-content-start">
+                                <a href="./login" class="btn btn-link text-primary" role="button" data-bs-ripple-init><span><%= component_text.link_sign_in %></span></a>
                             </div>
                         </div>
                     </div>
                     <!-- Form End -->
                     <hr class="my-1" />
-                    <p class="m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
+                    <p class="text-white m-0 mt-3"><%= component_text.t_pa_pr_footer %></p>
                 </div>
             </div>
         </div>

@@ -242,7 +242,7 @@ exports.signup = async (req, res, next) => {
 	const siteLang = req.session.language ? req.session.language : "es"
 	data.language = siteLang
 	
-	const captcha = await getCaptcha(6, 0, false)
+	const captcha = await getCaptcha(6, 0, true)
 	data.captcha_image = captcha.captcha
 	req.session.ying = captcha.key
 
@@ -338,7 +338,7 @@ exports.help = async (req, res, next) => {
 	const siteLang = req.session.language ? req.session.language : "es"
 	data.language = siteLang
 	
-	const captcha = await getCaptcha(6, 0, false)
+	const captcha = await getCaptcha(6, 0, true)
 	data.captcha_image = captcha.captcha
 	req.session.ying = captcha.key
 
