@@ -25,39 +25,6 @@
         }
     }
 
-    const passwordInput = document.getElementById('password')
-    const passwordToggleIcon = document.getElementById('password-icon')
-    const repasswordInput = document.getElementById('repassword')
-    const repasswordToggleIcon = document.getElementById('repassword-icon')
-
-    passwordToggleIcon.addEventListener('pointerdown', (e) => {
-        e.preventDefault()
-        // Toggle input type between password and text
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text'
-            passwordToggleIcon.classList.remove('fa-eye')
-            passwordToggleIcon.classList.add('fa-eye-slash')
-        } else {
-            passwordInput.type = 'password'
-            passwordToggleIcon.classList.remove('fa-eye-slash')
-            passwordToggleIcon.classList.add('fa-eye')
-        }
-    })
-
-    repasswordToggleIcon.addEventListener('pointerdown', (e) => {
-        e.preventDefault()
-        // Toggle input type between password and text
-        if (repasswordInput.type === 'password') {
-            repasswordInput.type = 'text'
-            repasswordToggleIcon.classList.remove('fa-eye')
-            repasswordToggleIcon.classList.add('fa-eye-slash')
-        } else {
-            repasswordInput.type = 'password'
-            repasswordToggleIcon.classList.remove('fa-eye-slash')
-            repasswordToggleIcon.classList.add('fa-eye')
-        }
-    })
-
     $(document).ready(function() {
         
         $(document).on('input', '#password', e => {
